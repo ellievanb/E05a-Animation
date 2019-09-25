@@ -9,6 +9,7 @@ python -m arcade.examples.move_keyboard
 
 import arcade
 
+#states width and height of window, and the title that appears at the top
 SCREEN_WIDTH = 640
 SCREEN_HEIGHT = 480
 SCREEN_TITLE = "Move Keyboard Example"
@@ -26,6 +27,7 @@ class Ball:
         self.radius = radius
         self.color = color
 
+    #draws the ball based on the stated variables
     def draw(self):
         """ Draw the balls with the instance variables we have. """
         arcade.draw_circle_filled(self.position_x, self.position_y, self.radius, self.color)
@@ -65,6 +67,7 @@ class MyGame(arcade.Window):
         # Create our ball
         self.ball = Ball(50, 50, 0, 0, 15, arcade.color.AUBURN)
 
+    #creates the ball in the window
     def on_draw(self):
         """ Called whenever we need to draw the window. """
         arcade.start_render()
@@ -73,6 +76,7 @@ class MyGame(arcade.Window):
     def update(self, delta_time):
         self.ball.update()
 
+    #moves the ball based on what arrow key is pressed on the keyboard
     def on_key_press(self, key, modifiers):
         """ Called whenever the user presses a key. """
         if key == arcade.key.LEFT:
@@ -84,6 +88,7 @@ class MyGame(arcade.Window):
         elif key == arcade.key.DOWN:
             self.ball.change_y = -MOVEMENT_SPEED
 
+    #when an arrow key is released, the abll stops moving in that direction
     def on_key_release(self, key, modifiers):
         """ Called whenever a user releases a key. """
         if key == arcade.key.LEFT or key == arcade.key.RIGHT:
